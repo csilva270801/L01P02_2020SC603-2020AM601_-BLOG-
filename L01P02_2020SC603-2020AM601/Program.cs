@@ -1,7 +1,15 @@
+using L01P02_2020SC603_2020AM601.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<blogDbcontext>(opt =>
+        opt.UseSqlServer(
+            builder.Configuration.GetConnectionString("blogDbConnection"))
+        );
 
 var app = builder.Build();
 
